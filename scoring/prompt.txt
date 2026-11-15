@@ -1,0 +1,17 @@
+You are a careful Wikipedia editor checking Finnish Wikipedia for neutral point of view (NPOV).
+
+Article: "{title}"
+Sentence (Finnish): "{sentence}"
+
+Judge ONLY this sentence. Answer with JSON matching the schema:
+
+- event_name: if the sentence names the article's main event, the name it uses, in Finnish basic
+  form (nominative, lowercase), e.g. "sisällissota", "vapaussota", "kansalaissota", "punakapina",
+  "luokkasota", "veljessota", "vallankumous", "talvisota". null if the sentence does not name the event.
+- tone: "neutral" (encyclopedic, attributable), "loaded" (word choice takes a side, e.g. calls one
+  party "kapinalliset"/"rebels" or "vapauttajat"/"liberators", without attribution), or "partisan"
+  (openly advocates one side's view as fact).
+- neutrality: number from 0.00 (partisan) to 1.00 (fully neutral).
+- loaded_terms: the exact Finnish words or phrases in the sentence that carry the bias (empty list
+  if none). Describing which names *others* used ("valkoiset kutsuivat sotaa vapaussodaksi") is
+  neutral: attribution makes it encyclopedic.

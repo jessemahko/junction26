@@ -1,0 +1,21 @@
+# AikaKone, Python 3.11+ (developed on 3.14). Versions in comments = the ones it was tested with.
+
+# API
+fastapi>=0.110            # 0.162
+uvicorn>=0.29             # 0.54
+pydantic>=2               # 2.14
+pymysql>=1.1              # 1.2
+
+# data loading
+pyarrow>=15               # 26.0
+numpy>=1.26               # 2.5
+tzdata>=2024.1            # pyarrow needs a time-zone database on Windows
+
+# semantic search: bge-m3 query embeddings on CPU (common/embed.py, ingest/embed_cpu.py).
+# The CPU build of torch is enough:  pip install torch --index-url https://download.pytorch.org/whl/cpu
+sentence-transformers>=3.0   # 6.3
+torch>=2.2                   # 2.15+cpu
+
+# Gemma client (scoring/) and tests
+httpx>=0.27               # 0.28
+pytest>=8                 # 9.2

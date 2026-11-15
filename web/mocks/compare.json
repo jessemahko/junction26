@@ -1,0 +1,452 @@
+{
+ "sql": "-- MOCK DATA (fake distances and judgements): see docs/contracts.md\nSELECT p.fi_sent, fi.text AS fi_text, p.other_lang, p.other_sent, o.text AS other_text, p.distance\nFROM lang_pair p\nJOIN lang_sentence fi ON fi.lang = 'fi' AND fi.page_id = 1137 AND fi.sent_no = p.fi_sent\nLEFT JOIN lang_sentence o ON o.lang = p.other_lang AND o.page_id = p.other_page AND o.sent_no = p.other_sent\nWHERE p.wikidata_id = 'Q29207'\nORDER BY p.fi_sent, p.other_lang;\n\nSELECT fi_sent_no, other_lang, other_sent_no, label, reason, tone_fi, tone_other,\n       fi_claim, other_claim, same_specific_fact, model\nFROM pair_judgement\nWHERE wikidata_id = 'Q29207'\nORDER BY fi_sent_no, other_lang, other_sent_no, model",
+ "topic": {
+  "wikidata_id": "Q29207",
+  "titles": {
+   "fi": "Sauli Niinistö",
+   "sv": "Sauli Niinistö",
+   "en": "Sauli Niinistö"
+  },
+  "urls": {
+   "fi": "https://fi.wikipedia.org/wiki/Sauli_Niinist%C3%B6",
+   "sv": "https://sv.wikipedia.org/wiki/Sauli_Niinist%C3%B6",
+   "en": "https://en.wikipedia.org/wiki/Sauli_Niinist%C3%B6"
+  },
+  "edit_urls": {
+   "fi": "https://fi.wikipedia.org/w/index.php?title=Sauli_Niinist%C3%B6&action=edit",
+   "sv": "https://sv.wikipedia.org/w/index.php?title=Sauli_Niinist%C3%B6&action=edit",
+   "en": "https://en.wikipedia.org/w/index.php?title=Sauli_Niinist%C3%B6&action=edit"
+  },
+  "page_ids": {
+   "fi": 1137,
+   "sv": 0,
+   "en": 0
+  }
+ },
+ "scores": {
+  "fi_sv": 0.212,
+  "fi_en": 0.168,
+  "sv_en": 0.143
+ },
+ "rows": [
+  {
+   "fi": {
+    "sent_no": 0,
+    "text": "Sauli Väinämö Niinistö (s. 24. elokuuta 1948 Salo) on suomalainen poliitikko, joka toimi Suomen tasavallan 12. presidenttinä vuosina 2012–2024."
+   },
+   "sv": {
+    "sent_no": 0,
+    "text": "Sauli Väinämö Niinistö, född 24 augusti 1948 i Salo, är en finländsk politiker som var Finlands tolfte president 2012–2024.",
+    "distance": 0.071
+   },
+   "en": {
+    "sent_no": 0,
+    "text": "Sauli Väinämö Niinistö (born 24 August 1948) is a Finnish politician who served as the 12th president of Finland from 2012 to 2024.",
+    "distance": 0.083
+   },
+   "covered_by": {
+    "sv": null,
+    "en": null
+   },
+   "status": "match",
+   "judgements": [
+    {
+     "lang": "en",
+     "label": "partial",
+     "reason": "The English sentence omits the birthplace Salo.",
+     "model": "google/gemma-3-27b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Niinistö, born 24 Aug 1948 in Salo, was Finland's 12th president 2012-2024.",
+     "other_claim": "Niinistö, born 24 Aug 1948, was Finland's 12th president 2012-2024.",
+     "same_specific_fact": true,
+     "note": null,
+     "both_models_agree": null
+    },
+    {
+     "lang": "sv",
+     "label": "same",
+     "reason": "Both give the same birth date, birthplace and presidential term.",
+     "model": "google/gemma-3-27b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Niinistö, born 24 Aug 1948 in Salo, was Finland's 12th president 2012-2024.",
+     "other_claim": "Niinistö, born 24 Aug 1948 in Salo, was Finland's 12th president 2012-2024.",
+     "same_specific_fact": true,
+     "note": null,
+     "both_models_agree": null
+    }
+   ]
+  },
+  {
+   "fi": {
+    "sent_no": 1,
+    "text": "Hän on koulutukseltaan oikeustieteen kandidaatti ja varatuomari."
+   },
+   "sv": {
+    "sent_no": 1,
+    "text": "Han är utbildad jurist och vicehäradshövding.",
+    "distance": 0.118
+   },
+   "en": null,
+   "covered_by": {
+    "sv": null,
+    "en": null
+   },
+   "status": "missing_en",
+   "judgements": []
+  },
+  {
+   "fi": {
+    "sent_no": 2,
+    "text": "Niinistö toimi valtiovarainministerinä vuosina 1996–2003 Paavo Lipposen hallituksissa."
+   },
+   "sv": {
+    "sent_no": 3,
+    "text": "Han var finansminister 1996–2003 i Paavo Lipponens regeringar.",
+    "distance": 0.064
+   },
+   "en": {
+    "sent_no": 2,
+    "text": "He served as Minister of Finance from 1996 to 2003 in the cabinets of Paavo Lipponen.",
+    "distance": 0.069
+   },
+   "covered_by": {
+    "sv": null,
+    "en": null
+   },
+   "status": "match",
+   "judgements": [
+    {
+     "lang": "en",
+     "label": "same",
+     "reason": "Same office, years and cabinets.",
+     "model": "google/gemma-3-27b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Minister of Finance 1996-2003 in Lipponen's cabinets.",
+     "other_claim": "Minister of Finance 1996-2003 in Lipponen's cabinets.",
+     "same_specific_fact": true,
+     "note": null,
+     "both_models_agree": null
+    },
+    {
+     "lang": "sv",
+     "label": "same",
+     "reason": "Same office, years and cabinets.",
+     "model": "google/gemma-3-27b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Minister of Finance 1996-2003 in Lipponen's cabinets.",
+     "other_claim": "Minister of Finance 1996-2003 in Lipponen's cabinets.",
+     "same_specific_fact": true,
+     "note": null,
+     "both_models_agree": null
+    }
+   ]
+  },
+  {
+   "fi": {
+    "sent_no": 3,
+    "text": "Hän oli eduskunnan puhemies vuosina 2007–2011."
+   },
+   "sv": {
+    "sent_no": 4,
+    "text": "Han var talman i riksdagen 2007–2010.",
+    "distance": 0.092
+   },
+   "en": {
+    "sent_no": 3,
+    "text": "He was Speaker of the Parliament of Finland from 2007 to 2011.",
+    "distance": 0.074
+   },
+   "covered_by": {
+    "sv": null,
+    "en": null
+   },
+   "status": "match",
+   "judgements": [
+    {
+     "lang": "sv",
+     "label": "contradiction",
+     "reason": "The end year of his term as Speaker differs (2011 vs 2010).",
+     "model": "google/gemma-3-12b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Speaker of Parliament 2007-2011.",
+     "other_claim": "Speaker of Parliament 2007-2010.",
+     "same_specific_fact": true,
+     "note": "Possible contradiction, check the sources (both models agree)",
+     "both_models_agree": true
+    },
+    {
+     "lang": "sv",
+     "label": "contradiction",
+     "reason": "The Finnish text says his term as Speaker ended in 2011, the Swedish text says 2010.",
+     "model": "google/gemma-3-27b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Speaker of Parliament 2007-2011.",
+     "other_claim": "Speaker of Parliament 2007-2010.",
+     "same_specific_fact": true,
+     "note": "Possible contradiction, check the sources (both models agree)",
+     "both_models_agree": true
+    },
+    {
+     "lang": "en",
+     "label": "same",
+     "reason": "Same office and years.",
+     "model": "google/gemma-3-27b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Speaker of Parliament 2007-2011.",
+     "other_claim": "Speaker of Parliament 2007-2011.",
+     "same_specific_fact": true,
+     "note": null,
+     "both_models_agree": null
+    }
+   ]
+  },
+  {
+   "fi": null,
+   "sv": {
+    "sent_no": 2,
+    "text": "Niinistö var ordförande för Samlingspartiet 1994–2001.",
+    "distance": 0.214
+   },
+   "en": null,
+   "covered_by": {
+    "sv": null,
+    "en": null
+   },
+   "status": "only_sv",
+   "judgements": []
+  },
+  {
+   "fi": {
+    "sent_no": 4,
+    "text": "Vuoden 2012 presidentinvaalin toisella kierroksella Niinistö sai 62,6 prosenttia äänistä ja voitti Pekka Haaviston."
+   },
+   "sv": null,
+   "en": {
+    "sent_no": 5,
+    "text": "In the second round of the 2012 presidential election, Niinistö defeated Pekka Haavisto with 62.7 percent of the vote.",
+    "distance": 0.081
+   },
+   "covered_by": {
+    "sv": {
+     "sent_no": 5,
+     "text": "Niinistö vann presidentvalet 2012 i andra omgången mot Pekka Haavisto.",
+     "distance": 0.297
+    },
+    "en": null
+   },
+   "status": "match",
+   "judgements": [
+    {
+     "lang": "en",
+     "label": "contradiction",
+     "reason": "The vote share differs: 62.6 percent in Finnish, 62.7 percent in English.",
+     "model": "google/gemma-3-27b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Won the 2012 runoff against Haavisto with 62.6 %.",
+     "other_claim": "Won the 2012 runoff against Haavisto with 62.7 %.",
+     "same_specific_fact": true,
+     "note": "Possible contradiction, check the sources",
+     "both_models_agree": false
+    },
+    {
+     "lang": "en",
+     "label": "same",
+     "reason": "Same election, same opponent; the share rounds alike.",
+     "model": "google/gemma-3-12b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Won the 2012 runoff against Haavisto with 62.6 %.",
+     "other_claim": "Won the 2012 runoff against Haavisto with 62.7 %.",
+     "same_specific_fact": true,
+     "note": null,
+     "both_models_agree": null
+    }
+   ]
+  },
+  {
+   "fi": {
+    "sent_no": 5,
+    "text": "Hänet valittiin toiselle kaudelle vuonna 2018 jo ensimmäisellä kierroksella."
+   },
+   "sv": {
+    "sent_no": 6,
+    "text": "Han omvaldes 2018 redan i första omgången.",
+    "distance": 0.067
+   },
+   "en": {
+    "sent_no": 6,
+    "text": "He was re-elected in 2018, winning outright in the first round.",
+    "distance": 0.078
+   },
+   "covered_by": {
+    "sv": null,
+    "en": null
+   },
+   "status": "match",
+   "judgements": [
+    {
+     "lang": "en",
+     "label": "same",
+     "reason": "Both say he won re-election in the first round in 2018.",
+     "model": "google/gemma-3-27b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Re-elected in 2018 in the first round.",
+     "other_claim": "Re-elected in 2018 in the first round.",
+     "same_specific_fact": true,
+     "note": null,
+     "both_models_agree": null
+    },
+    {
+     "lang": "sv",
+     "label": "same",
+     "reason": "Both say he won re-election in the first round in 2018.",
+     "model": "google/gemma-3-27b-it",
+     "tone_fi": "neutral",
+     "tone_other": "neutral",
+     "fi_claim": "Re-elected in 2018 in the first round.",
+     "other_claim": "Re-elected in 2018 in the first round.",
+     "same_specific_fact": true,
+     "note": null,
+     "both_models_agree": null
+    }
+   ]
+  },
+  {
+   "fi": {
+    "sent_no": 6,
+    "text": "Niinistön kautta pidetään yleisesti onnistuneena, ja hän nautti poikkeuksellisen laajaa kansansuosiota."
+   },
+   "sv": null,
+   "en": {
+    "sent_no": 8,
+    "text": "His presidency was marked by high approval ratings.",
+    "distance": 0.162
+   },
+   "covered_by": {
+    "sv": null,
+    "en": null
+   },
+   "status": "missing_sv",
+   "judgements": [
+    {
+     "lang": "en",
+     "label": "framing",
+     "reason": "The Finnish sentence calls his term generally successful, a judgement the English sentence does not make.",
+     "model": "google/gemma-3-27b-it",
+     "tone_fi": "loaded",
+     "tone_other": "neutral",
+     "fi_claim": "His term is generally seen as successful; he was exceptionally popular.",
+     "other_claim": "His presidency had high approval ratings.",
+     "same_specific_fact": false,
+     "note": null,
+     "both_models_agree": null
+    }
+   ]
+  },
+  {
+   "fi": {
+    "sent_no": 7,
+    "text": "Niinistön ensimmäinen puoliso Marja-Leena Alanko kuoli auto-onnettomuudessa vuonna 1995."
+   },
+   "sv": null,
+   "en": null,
+   "covered_by": {
+    "sv": null,
+    "en": null
+   },
+   "status": "missing_en",
+   "judgements": []
+  },
+  {
+   "fi": {
+    "sent_no": 8,
+    "text": "Hän avioitui Jenni Haukion kanssa vuonna 2009, ja heidän poikansa Aaro syntyi vuonna 2018."
+   },
+   "sv": {
+    "sent_no": 8,
+    "text": "Han gifte sig 2009 med Jenni Haukio och paret fick sonen Aaro 2018.",
+    "distance": 0.059
+   },
+   "en": {
+    "sent_no": 10,
+    "text": "In 2009 he married Jenni Haukio; their son Aaro was born in 2018.",
+    "distance": 0.062
+   },
+   "covered_by": {
+    "sv": null,
+    "en": null
+   },
+   "status": "match",
+   "judgements": []
+  },
+  {
+   "fi": null,
+   "sv": null,
+   "en": {
+    "sent_no": 11,
+    "text": "Niinistö was a key figure in Finland's application to join NATO in 2022.",
+    "distance": 0.231
+   },
+   "covered_by": {
+    "sv": null,
+    "en": null
+   },
+   "status": "only_en",
+   "judgements": []
+  }
+ ],
+ "contradictions": [
+  {
+   "row": 3,
+   "lang": "sv",
+   "fi": {
+    "sent_no": 3,
+    "text": "Hän oli eduskunnan puhemies vuosina 2007–2011."
+   },
+   "other": {
+    "sent_no": 4,
+    "text": "Han var talman i riksdagen 2007–2010.",
+    "distance": 0.092
+   },
+   "note": "Possible contradiction, check the sources (both models agree)",
+   "both_models_agree": true,
+   "models": [
+    "google/gemma-3-12b-it",
+    "google/gemma-3-27b-it"
+   ],
+   "reason": "The end year of his term as Speaker differs (2011 vs 2010).",
+   "fi_claim": "Speaker of Parliament 2007-2011.",
+   "other_claim": "Speaker of Parliament 2007-2010."
+  },
+  {
+   "row": 5,
+   "lang": "en",
+   "fi": {
+    "sent_no": 4,
+    "text": "Vuoden 2012 presidentinvaalin toisella kierroksella Niinistö sai 62,6 prosenttia äänistä ja voitti Pekka Haaviston."
+   },
+   "other": {
+    "sent_no": 5,
+    "text": "In the second round of the 2012 presidential election, Niinistö defeated Pekka Haavisto with 62.7 percent of the vote.",
+    "distance": 0.081
+   },
+   "note": "Possible contradiction, check the sources",
+   "both_models_agree": false,
+   "models": [
+    "google/gemma-3-27b-it"
+   ],
+   "reason": "The vote share differs: 62.6 percent in Finnish, 62.7 percent in English.",
+   "fi_claim": "Won the 2012 runoff against Haavisto with 62.6 %.",
+   "other_claim": "Won the 2012 runoff against Haavisto with 62.7 %."
+  }
+ ]
+}

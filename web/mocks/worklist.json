@@ -1,0 +1,182 @@
+{
+ "sql": "-- MOCK DATA (fake numbers): see docs/contracts.md\nSELECT d.wikidata_id, fi.title AS title_fi, sv.title AS title_sv, en.title AS title_en,\n       t.fi_page_id, d.score, d.fi_sv, d.fi_en, d.missing_sv, d.missing_en,\n       d.missing_in_fi_sv, d.missing_in_fi_en,\n       d.edit_war_score, j.judged_pairs, j.contradictions, j.framing\nFROM article_divergence d\nJOIN lang_topic t USING (wikidata_id)\nLEFT JOIN (SELECT wikidata_id, COUNT(*) AS judged_pairs,\n                  SUM(label = 'contradiction') AS contradictions, SUM(label = 'framing') AS framing\n           FROM pair_judgement WHERE model = 'google/gemma-3-27b-it' GROUP BY wikidata_id) j USING (wikidata_id)\nJOIN lang_article fi ON fi.lang = 'fi' AND fi.page_id = t.fi_page_id\nJOIN lang_article sv ON sv.lang = 'sv' AND sv.page_id = t.sv_page_id\nJOIN lang_article en ON en.lang = 'en' AND en.page_id = t.en_page_id\nORDER BY d.score DESC\nLIMIT 50",
+ "judged_by": "google/gemma-3-27b-it",
+ "data": [
+  {
+   "wikidata_id": "Q211855",
+   "titles": {
+    "fi": "Suomen sisällissota",
+    "sv": "Finska inbördeskriget",
+    "en": "Finnish Civil War"
+   },
+   "fi_page_id": 1150,
+   "score": 0.88,
+   "fi_sv": 0.231,
+   "fi_en": 0.187,
+   "missing_sv": 212,
+   "missing_en": 96,
+   "missing_in_fi": {
+    "sv": 146,
+    "en": 141
+   },
+   "contradictions": 5,
+   "framing": 30,
+   "judged_pairs": 192,
+   "edit_war_score": 0.93
+  },
+  {
+   "wikidata_id": "Q29207",
+   "titles": {
+    "fi": "Sauli Niinistö",
+    "sv": "Sauli Niinistö",
+    "en": "Sauli Niinistö"
+   },
+   "fi_page_id": 1137,
+   "score": 0.81,
+   "fi_sv": 0.212,
+   "fi_en": 0.168,
+   "missing_sv": 41,
+   "missing_en": 23,
+   "missing_in_fi": {
+    "sv": 11,
+    "en": 42
+   },
+   "contradictions": 2,
+   "framing": 12,
+   "judged_pairs": 46,
+   "edit_war_score": 0.74
+  },
+  {
+   "wikidata_id": "Q134949",
+   "titles": {
+    "fi": "Talvisota",
+    "sv": "Vinterkriget",
+    "en": "Winter War"
+   },
+   "fi_page_id": 1199,
+   "score": 0.77,
+   "fi_sv": 0.204,
+   "fi_en": 0.152,
+   "missing_sv": 133,
+   "missing_en": 58,
+   "missing_in_fi": {
+    "sv": 33,
+    "en": 19
+   },
+   "contradictions": 3,
+   "framing": 18,
+   "judged_pairs": 116,
+   "edit_war_score": 0.71
+  },
+  {
+   "wikidata_id": "Q152306",
+   "titles": {
+    "fi": "Carl Gustaf Emil Mannerheim",
+    "sv": "Carl Gustaf Emil Mannerheim",
+    "en": "Carl Gustaf Emil Mannerheim"
+   },
+   "fi_page_id": 6021,
+   "score": 0.72,
+   "fi_sv": 0.176,
+   "fi_en": 0.161,
+   "missing_sv": 87,
+   "missing_en": 64,
+   "missing_in_fi": {
+    "sv": 21,
+    "en": 21
+   },
+   "contradictions": 2,
+   "framing": 12,
+   "judged_pairs": 128,
+   "edit_war_score": 0.66
+  },
+  {
+   "wikidata_id": "Q193740",
+   "titles": {
+    "fi": "Jatkosota",
+    "sv": "Fortsättningskriget",
+    "en": "Continuation War"
+   },
+   "fi_page_id": 1200,
+   "score": 0.69,
+   "fi_sv": 0.198,
+   "fi_en": 0.149,
+   "missing_sv": 118,
+   "missing_en": 47,
+   "missing_in_fi": {
+    "sv": 29,
+    "en": 15
+   },
+   "contradictions": 1,
+   "framing": 6,
+   "judged_pairs": 94,
+   "edit_war_score": 0.58
+  },
+  {
+   "wikidata_id": "Q57617",
+   "titles": {
+    "fi": "Urho Kekkonen",
+    "sv": "Urho Kekkonen",
+    "en": "Urho Kekkonen"
+   },
+   "fi_page_id": 4110,
+   "score": 0.63,
+   "fi_sv": 0.189,
+   "fi_en": 0.171,
+   "missing_sv": 76,
+   "missing_en": 52,
+   "missing_in_fi": {
+    "sv": 19,
+    "en": 17
+   },
+   "contradictions": null,
+   "framing": null,
+   "judged_pairs": null,
+   "edit_war_score": 0.61
+  },
+  {
+   "wikidata_id": "Q34001",
+   "titles": {
+    "fi": "Tarja Halonen",
+    "sv": "Tarja Halonen",
+    "en": "Tarja Halonen"
+   },
+   "fi_page_id": 2290,
+   "score": 0.59,
+   "fi_sv": 0.164,
+   "fi_en": 0.142,
+   "missing_sv": 39,
+   "missing_en": 28,
+   "missing_in_fi": {
+    "sv": 9,
+    "en": 9
+   },
+   "contradictions": null,
+   "framing": null,
+   "judged_pairs": null,
+   "edit_war_score": 0.82
+  },
+  {
+   "wikidata_id": "Q190627",
+   "titles": {
+    "fi": "Lapuanliike",
+    "sv": "Lapporörelsen",
+    "en": "Lapua Movement"
+   },
+   "fi_page_id": 11477,
+   "score": 0.47,
+   "fi_sv": 0.221,
+   "fi_en": 0.137,
+   "missing_sv": 44,
+   "missing_en": 17,
+   "missing_in_fi": {
+    "sv": 11,
+    "en": 5
+   },
+   "contradictions": null,
+   "framing": null,
+   "judged_pairs": null,
+   "edit_war_score": 0.29
+  }
+ ]
+}

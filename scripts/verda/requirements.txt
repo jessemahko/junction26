@@ -1,0 +1,7 @@
+# scripts/verda/embed_sentences.py on a Verda GPU (Linux, CUDA): current versions are fine.
+torch
+sentence-transformers
+pyarrow
+numpy
+# On an Intel Mac (torch stops at 2.2.2, CPU only), pin instead:
+#   torch==2.2.2 "numpy<2" "pyarrow<20" "transformers>=4.41,<4.47" "sentence-transformers>=3.0,<3.4" "huggingface-hub<1"

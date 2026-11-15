@@ -1,0 +1,28 @@
+# secrets and local data (datasets, Verda results, logs)
+.env
+data/
+reference/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# web app
+node_modules/
+web/dist/
+
+# editors and OS
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.part
+
+# a stray nested repo (a photo), not part of the project
+/Junction26/
+
+# leftover build output of the deleted globe app (safe to delete)
+web/globe/
